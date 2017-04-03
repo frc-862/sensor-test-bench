@@ -24,7 +24,7 @@ void drawLine(byte x1, byte y1, byte x2, byte y2, byte set)
   serial.write(x2);
   serial.write(y2);
   serial.write(0x01);
-  delay(10);
+  delay(5);
 }
 void drawCircle(byte x, byte y, byte rad, byte set) {
 //draws a circle from a point x,y with a radius of rad. 
@@ -70,4 +70,11 @@ void displayLCD() {
   i2cLCD.setCursor(15, 3);
   i2cLCD.print(digitalRead(3)); //display D3 digital data
 }
-
+void smile() {
+  drawCircle(125, 100, 20, 0); //large circle
+  drawCircle(115, 95, 2, 0); //left eye
+  drawCircle(135, 95, 2, 0); //right eye
+  drawLine(115, 107, 120, 110, 0); //left smile line
+  drawLine(120, 110, 130, 110, 0); //center line
+  drawLine(130, 110, 135, 107, 0); //right line
+}

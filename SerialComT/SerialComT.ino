@@ -10,6 +10,7 @@ void setupLCD();
 void displayLCD();
 void drawCircle();
 void smile();
+
 void setup() {
   serial.begin(115200);
   delay(4000);
@@ -21,31 +22,30 @@ void setup() {
 void loop()
 {
   setHome();
-  drawLine(0, 4, 160, 4, 0);
-  drawLine(0, 18, 160, 18, 0);
+  drawLine(4, 4, 155, 4, 0);
+  drawLine(4, 18, 155, 18, 0);
   delay(100);
   serial.println();
   serial.print("       Hello there!");
   delay(100);
   serial.println();
   serial.println();
+  
   serial.print(" Analog Zero: ~");
+  delay(5); //sanity delay
   serial.print(analogRead(A0));
   serial.println();
   delay(10);
-  serial.print(" Analog One: ~");
+  
+  serial.print(" Analog One:  ~");
+  delay(5); //sanity delay
   serial.print(analogRead(A1));
   serial.println();
+  delay(10);
+  
   displayLCD();
   smile();
-  delay(1000);
+  delay(770);
 }
-void smile() {
-  drawCircle(125, 100, 20, 0); //large circle
-  drawCircle(115, 95, 2, 0); //left eye
-  drawCircle(135, 95, 2, 0); //right eye
-  drawLine(115, 107, 120, 110, 0); //left smile line
-  drawLine(120, 110, 130, 110, 0); //center line
-  drawLine(130, 110, 135, 107, 0); //right line
-}
+
 
