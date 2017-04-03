@@ -26,6 +26,28 @@ void drawLine(byte x1, byte y1, byte x2, byte y2, byte set)
   serial.write(0x01);
   delay(10);
 }
+void drawCircle(byte x, byte y, byte rad, byte set) {
+//draws a circle from a point x,y with a radius of rad. 
+//Circles can be drawn off-grid, but only those pixels that fall within the 
+//display boundaries will be written.
+  serial.write(0x7C);
+  serial.write(0x03);//CTRL c 
+  serial.write(x);
+  serial.write(y);
+  serial.write(rad);
+  serial.write(0x01);
+  delay(10);
+}
+void eraseBlock(byte x1, byte y1, byte x2, byte y2) {
+  //This is just like the draw box command, except the contents of the box are erased to the background color
+  serial.write(0x7C);
+  serial.write(0x05);//CTRL e 
+  serial.write(x1);
+  serial.write(y1);
+  serial.write(x2);
+  serial.write(y2);
+  delay(10);
+}
 void setupLCD() {
   i2cLCD.begin(20, 4, LCD_5x8DOTS); //start LCD, 20 characters, 4 lines, 5x8dot matrix
   i2cLCD.setCursor(0, 0); //set cursor at char0 line0
@@ -48,16 +70,4 @@ void displayLCD() {
   i2cLCD.setCursor(15, 3);
   i2cLCD.print(digitalRead(3)); //display D3 digital data
 }
-void drawCircle(byte x, byte y, byte rad, byte set) {
-//draws a circle from a point x,y with a radius of rad. 
-//Circles can be drawn off-grid, but only those pixels that fall within the 
-//display boundaries will be written.
-  serial.write(0x7C);
-  serial.write(0x03);//CTRL c 
-  serial.write(x);
-  serial.write(y);
-  serial.write(rad);
-  serial.write(0x01);
-  delay(10);
-  
-}
+
