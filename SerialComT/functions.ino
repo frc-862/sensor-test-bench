@@ -38,6 +38,19 @@ void drawCircle(byte x, byte y, byte rad, byte set) {
   serial.write(0x01);
   delay(10);
 }
+void drawBox(byte x1, byte y1, byte x2, byte y2, byte set)
+{
+  //draws a box from two given points. You can set and reset just as the pixel function. 
+  serial.write(0x7C);
+  serial.write(0x0F);//CTRL o 
+  serial.write(x1);
+  serial.write(y1);
+  serial.write(x2);
+  serial.write(y2);
+  serial.write(0x01);
+  delay(10);
+  
+}
 void eraseBlock(byte x1, byte y1, byte x2, byte y2) {
   //This is just like the draw box command, except the contents of the box are erased to the background color
   serial.write(0x7C);
@@ -78,3 +91,49 @@ void smile() {
   drawLine(120, 110, 130, 110, 0); //center line
   drawLine(130, 110, 135, 107, 0); //right line
 }
+void drawGridlines() {
+  delay(10);
+  drawLine(4, 4, 155, 4, 0); //title bar top
+  drawLine(4, 18, 155, 18, 0); //title bar bottom
+  drawBox(4, 22, 155, 100, 0); //box border
+  drawLine(65, 22, 65, 100, 0); //box divider
+  delay(10);
+}
+void setY(byte posY)//0-63 or 0-127 pixels
+{
+  //Set the y position 
+  serial.write(0x7C);
+  serial.write(0x19);//CTRL y
+  serial.write(posY);
+  
+}
+void setX(byte posX) //0-127 or 0-159 pixels
+{
+  //Set the X position 
+  serial.write(0x7C);
+  serial.write(0x18);//CTRL x
+  serial.write(posX);
+}
+void xColumn() {
+  delay(10);
+  setX(10);
+  setY(27);
+  serial.print("Analog 0");
+  serial.println();
+  serial.print("Analog 1");
+  serial.println();
+  serial.print("Analog 2");
+  delay(10);
+}
+void yColumn() {
+  delay(10);
+  setX(83);
+  setY(27);
+  serial.print(analogRead(A0));
+  serial.println();
+  serial.print(analogRead(A1));
+  serial.println();
+  serial.print(analogRead(A2));
+  delay(10);
+}
+
