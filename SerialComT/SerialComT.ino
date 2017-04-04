@@ -8,9 +8,10 @@ SoftwareSerial serial(2, 3);
 
 void setup() {
   serial.begin(115200);
+  setupLCD();
   delay(4000);
   clearScreen();
-  //setupLCD();
+  
 
   delay(10);
   setHome();
@@ -43,8 +44,7 @@ void loop()
   delay(10);
   displayLCD();
   //smile();
-  delay(10);
-  delay(500);
+  delay(510);
 }
 
 
