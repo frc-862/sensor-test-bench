@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include <SparkFunSerialGraphicLCD.h>//inculde the Serial Graphic LCD library
 #include <SoftwareSerial.h>
 //change these two pin values to whichever pins you wish to use (RX, TX)

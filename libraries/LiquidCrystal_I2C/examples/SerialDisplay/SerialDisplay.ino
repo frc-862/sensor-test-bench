@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 /*
  * Displays text sent over the serial port (e.g. from the Serial Monitor) on
  * an attached LCD.
