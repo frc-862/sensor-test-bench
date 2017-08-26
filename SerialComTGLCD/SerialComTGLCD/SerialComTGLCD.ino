@@ -10,7 +10,7 @@ void setup() {
   serial.begin(115200);
   delay(4000);
   clearScreen();
-  
+
 
   delay(10);
   setHome();
@@ -38,7 +38,7 @@ void loop()
 
 
   setHome();
-  
+
   yColumn();
 
   delay(500);
@@ -48,5 +48,3 @@ void loop()
 
   delay(510);
 }
-
-

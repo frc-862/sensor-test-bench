@@ -1,5 +1,4 @@
 #include <Arduino.h>
-
 void clearScreen()
 {
   serial.write(0x7C);
@@ -27,11 +26,11 @@ void drawLine(byte x1, byte y1, byte x2, byte y2, byte set)
   delay(5);
 }
 void drawCircle(byte x, byte y, byte rad, byte set) {
-//draws a circle from a point x,y with a radius of rad. 
-//Circles can be drawn off-grid, but only those pixels that fall within the 
+//draws a circle from a point x,y with a radius of rad.
+//Circles can be drawn off-grid, but only those pixels that fall within the
 //display boundaries will be written.
   serial.write(0x7C);
-  serial.write(0x03);//CTRL c 
+  serial.write(0x03);//CTRL c
   serial.write(x);
   serial.write(y);
   serial.write(rad);
@@ -40,21 +39,21 @@ void drawCircle(byte x, byte y, byte rad, byte set) {
 }
 void drawBox(byte x1, byte y1, byte x2, byte y2, byte set)
 {
-  //draws a box from two given points. You can set and reset just as the pixel function. 
+  //draws a box from two given points. You can set and reset just as the pixel function.
   serial.write(0x7C);
-  serial.write(0x0F);//CTRL o 
+  serial.write(0x0F);//CTRL o
   serial.write(x1);
   serial.write(y1);
   serial.write(x2);
   serial.write(y2);
   serial.write(0x01);
   delay(10);
-  
+
 }
 void eraseBlock(byte x1, byte y1, byte x2, byte y2) {
   //This is just like the draw box command, except the contents of the box are erased to the background color
   serial.write(0x7C);
-  serial.write(0x05);//CTRL e 
+  serial.write(0x05);//CTRL e
   serial.write(x1);
   serial.write(y1);
   serial.write(x2);
@@ -87,15 +86,15 @@ void drawGridlines() {
 }
 void setY(byte posY)//0-63 or 0-127 pixels
 {
-  //Set the y position 
+  //Set the y position
   serial.write(0x7C);
   serial.write(0x19);//CTRL y
   serial.write(posY);
-  
+
 }
 void setX(byte posX) //0-127 or 0-159 pixels
 {
-  //Set the X position 
+  //Set the X position
   serial.write(0x7C);
   serial.write(0x18);//CTRL x
   serial.write(posX);
@@ -122,4 +121,3 @@ void yColumn() {
   serial.print(analogRead(A2));
   delay(10);
 }
-
