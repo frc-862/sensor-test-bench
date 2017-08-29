@@ -61,7 +61,7 @@ void eraseBlock(byte x1, byte y1, byte x2, byte y2) {
   delay(10);
 }
 
-void smile() {
+void drawSmile() {
   drawCircle(132, 100, 20, 0); //large circle
   drawCircle(122, 95, 2, 0); //left eye
   drawCircle(142, 95, 2, 0); //right eye
@@ -72,16 +72,17 @@ void smile() {
 void drawGridlines() {
   delay(10);
   drawLine(4, 4, 155, 4, 0); //title bar top
-  drawLine(4, 18, 155, 18, 0); //title bar bottom
   delay(5);
-  drawLine(4, 22, 155, 22, 0); //box top
-  drawLine(4, 22, 4, 100, 0); //box left
+  drawLine(4, 20, 155, 20, 0); //box top
+  drawLine(4, 32, 155, 32, 0); //boxtitles bottom
+  drawLine(4, 20, 4, 100, 0); //box left
   delay(5);
-  drawLine(4, 100, 112, 100, 0); //box bottom
-  drawLine(153, 100, 155, 100, 0); //box bottom after smile
+  drawLine(4, 100, 155, 100, 0); //box bottom
+  //drawLine(4, 100, 112, 100, 0); //box bottom
+  //drawLine(153, 100, 155, 100, 0); //box bottom after smile
   delay(5);
-  drawLine(155, 22, 155, 100, 0); //box right
-  drawLine(65, 22, 65, 100, 0); //box divider
+  drawLine(155, 20, 155, 100, 0); //box right
+  drawLine(75, 20, 75, 100, 0); //box divider
   delay(10);
 }
 void setY(byte posY)//0-63 or 0-127 pixels
@@ -99,25 +100,34 @@ void setX(byte posX) //0-127 or 0-159 pixels
   serial.write(0x18);//CTRL x
   serial.write(posX);
 }
-void xColumn() {
-//  delay(10);
+void printXColumn() {
+  delay(10);
   setX(10);
-  setY(27);
+  setY(37);
   serial.print("Analog 0");
   serial.println();
   serial.print("Analog 1");
   serial.println();
+  delay(30);
   serial.print("Analog 2");
-//  delay(10);
+  serial.println();
+  serial.print("Digital 22");
+  serial.println();
+  delay(30);
+  serial.print("Digital 23");
+  serial.println();
+  serial.print("Digital 24");
+  serial.println();
+  delay(10);
 }
-void yColumn() {
+void printYColumn() {
   delay(10);
   setX(83);
-  setY(27);
+  setY(37);
   serial.print(analogRead(A0));
   serial.println();
   serial.print(analogRead(A1));
   serial.println();
   serial.print(analogRead(A2));
-  delay(10);
+  delay(20);
 }
