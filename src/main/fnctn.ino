@@ -99,29 +99,19 @@ void printXColumn()
   setX(10);
   setY(37);
   serial.println("Analog 0");
-  //serial.println();
   serial.println("Analog 1");
-  //serial.println();
   delay(30);
   serial.println("Analog 2");
-  //serial.println();
   serial.println("Analog 3");
-  //serial.println();
   delay(30);
   serial.println("Analog 4");
-  //serial.println();
   serial.println("Analog 5");
-  //serial.println();
   delay(30);
   serial.println("Analog 6");
-  //serial.println();
   serial.println("Digital 21");
-  //serial.println();
   delay(30);
   serial.println("Digital 22");
-  //serial.println();
   serial.println("Digital 23");
-  //serial.println();
   delay(10);
 }
 void printYColumn()
@@ -129,27 +119,16 @@ void printYColumn()
   setX(82);
   setY(37);
   serial.println(analogRead(A0));
-  //serial.println();
   serial.println(analogRead(A1));
-  //serial.println();
-  //delay(50);
   serial.println(analogRead(A2));
-  //serial.println();
   serial.println(analogRead(A3));
-  //serial.println();
   delay(50);
   serial.println(analogRead(A4));
-  //serial.println();
   serial.println(analogRead(A5));
-  //serial.println();
-  //delay(50);
   serial.println(analogRead(A6));
-  //serial.println();
   serial.println(digitalRead(21));
-  //serial.println();
   delay(50);
   serial.println(digitalRead(22));
-  //serial.println();
   serial.println(digitalRead(23));
 
 }

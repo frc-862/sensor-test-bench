@@ -27,7 +27,6 @@ void setup()
 
   drawGridlines(); //Main box around labels and data output text
 
-
   setX(25); //set location for title text
   setY(8); // ^
   delay(50); //stability delay
@@ -38,7 +37,6 @@ void setup()
   serial.print("Input");
   setX(100);
   serial.print("Value");
-
 
   delay(200); //replaces smile for stability's sake
   printXColumn();
@@ -51,11 +49,6 @@ void loop()
   delay(100);
   printYColumn();
   delay(1100);
-
-  //drawBox(76, 33, 154, 80, 0); //to show where the erased area is
-
-  //delay(100);
-
   eraseBlock(76, 33, 154, 119);
   delay(250);
   //clear the area where the values are displayed to remove residual digits if value gains or loses a digit
