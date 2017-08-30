@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SoftwareSerial.h>
+#include <avr/power.h>
 SoftwareSerial serial(2, 3); //RX, TX
 /*
 Due to the fact that the MCU running the display is slower than the one we are
@@ -47,14 +48,16 @@ void setup()
 void loop()
 {
   setHome();
+  delay(100);
   printYColumn();
-  delay(1000);
+  delay(1100);
 
   //drawBox(76, 33, 154, 80, 0); //to show where the erased area is
 
   //delay(100);
-  setHome();
-  eraseBlock(76, 33, 154, 80);
+
+  eraseBlock(76, 33, 154, 119);
+  delay(250);
   //clear the area where the values are displayed to remove residual digits if value gains or loses a digit
 
 }

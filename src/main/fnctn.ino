@@ -48,7 +48,6 @@ void drawBox(byte x1, byte y1, byte x2, byte y2, byte set)
   serial.write(y2);
   serial.write(0x01);
   delay(10);
-
 }
 void eraseBlock(byte x1, byte y1, byte x2, byte y2) {
   //This is just like the draw box command, except the contents of the box are erased to the background color
@@ -58,10 +57,10 @@ void eraseBlock(byte x1, byte y1, byte x2, byte y2) {
   serial.write(y1);
   serial.write(x2);
   serial.write(y2);
-  delay(10);
+  delay(20);
 }
-
-void drawSmile() {
+void drawSmile()
+{
   drawCircle(132, 100, 20, 0); //large circle
   drawCircle(122, 95, 2, 0); //left eye
   drawCircle(142, 95, 2, 0); //right eye
@@ -69,21 +68,15 @@ void drawSmile() {
   drawLine(127, 110, 137, 110, 0); //center line
   drawLine(137, 110, 142, 107, 0); //right line
 }
-void drawGridlines() {
-  delay(10);
+void drawGridlines()
+{
   drawLine(4, 4, 155, 4, 0); //title bar top
-  delay(5);
   drawLine(4, 20, 155, 20, 0); //box top
   drawLine(4, 32, 155, 32, 0); //boxtitles bottom
-  drawLine(4, 20, 4, 100, 0); //box left
-  delay(5);
-  drawLine(4, 100, 155, 100, 0); //box bottom
-  //drawLine(4, 100, 112, 100, 0); //box bottom
-  //drawLine(153, 100, 155, 100, 0); //box bottom after smile
-  delay(5);
-  drawLine(155, 20, 155, 100, 0); //box right
-  drawLine(75, 20, 75, 100, 0); //box divider
-  delay(10);
+  drawLine(4, 20, 4, 120, 0); //box left
+  drawLine(4, 120, 155, 120, 0); //box bottom
+  drawLine(155, 20, 155, 120, 0); //box right
+  drawLine(75, 20, 75, 120, 0); //box divider
 }
 void setY(byte posY)//0-63 or 0-127 pixels
 {
@@ -100,34 +93,63 @@ void setX(byte posX) //0-127 or 0-159 pixels
   serial.write(0x18);//CTRL x
   serial.write(posX);
 }
-void printXColumn() {
+void printXColumn()
+{
   delay(10);
   setX(10);
   setY(37);
-  serial.print("Analog 0");
-  serial.println();
-  serial.print("Analog 1");
-  serial.println();
+  serial.println("Analog 0");
+  //serial.println();
+  serial.println("Analog 1");
+  //serial.println();
   delay(30);
-  serial.print("Analog 2");
-  serial.println();
-  serial.print("Digital 22");
-  serial.println();
+  serial.println("Analog 2");
+  //serial.println();
+  serial.println("Analog 3");
+  //serial.println();
   delay(30);
-  serial.print("Digital 23");
-  serial.println();
-  serial.print("Digital 24");
-  serial.println();
+  serial.println("Analog 4");
+  //serial.println();
+  serial.println("Analog 5");
+  //serial.println();
+  delay(30);
+  serial.println("Analog 6");
+  //serial.println();
+  serial.println("Digital 21");
+  //serial.println();
+  delay(30);
+  serial.println("Digital 22");
+  //serial.println();
+  serial.println("Digital 23");
+  //serial.println();
   delay(10);
 }
-void printYColumn() {
-  delay(10);
-  setX(83);
+void printYColumn()
+{
+  setX(82);
   setY(37);
-  serial.print(analogRead(A0));
-  serial.println();
-  serial.print(analogRead(A1));
-  serial.println();
-  serial.print(analogRead(A2));
-  delay(20);
+  serial.println(analogRead(A0));
+  //serial.println();
+  serial.println(analogRead(A1));
+  //serial.println();
+  //delay(50);
+  serial.println(analogRead(A2));
+  //serial.println();
+  serial.println(analogRead(A3));
+  //serial.println();
+  delay(50);
+  serial.println(analogRead(A4));
+  //serial.println();
+  serial.println(analogRead(A5));
+  //serial.println();
+  //delay(50);
+  serial.println(analogRead(A6));
+  //serial.println();
+  serial.println(digitalRead(21));
+  //serial.println();
+  delay(50);
+  serial.println(digitalRead(22));
+  //serial.println();
+  serial.println(digitalRead(23));
+
 }
