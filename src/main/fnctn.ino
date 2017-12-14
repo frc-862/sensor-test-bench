@@ -76,7 +76,9 @@ void drawGridlines()
   drawLine(4, 20, 4, 120, 0); //box left
   drawLine(4, 120, 155, 120, 0); //box bottom
   drawLine(155, 20, 155, 120, 0); //box right
-  drawLine(75, 20, 75, 120, 0); //box divider
+  drawLine(42, 32, 42, 120, 0); //box divider
+  drawLine(80, 32, 80, 120, 0); //box divider
+  drawLine(117, 32, 117, 120, 0); //box divider
 }
 void setY(byte posY)//0-63 or 0-127 pixels
 {
@@ -93,30 +95,31 @@ void setX(byte posX) //0-127 or 0-159 pixels
   serial.write(0x18);//CTRL x
   serial.write(posX);
 }
-void printXColumn()
+void printXColumnA()
 {
   delay(10);
-  setX(10);
+  setX(18);
   setY(37);
-  serial.println("Analog 0");
-  serial.println("Analog 1");
-  delay(30);
-  serial.println("Analog 2");
-  serial.println("Analog 3");
-  delay(30);
-  serial.println("Analog 4");
-  serial.println("Analog 5");
-  delay(30);
-  serial.println("Analog 6");
-  serial.println("Digital 21");
-  delay(30);
-  serial.println("Digital 22");
-  serial.println("Digital 23");
+  serial.println("A0");
+  serial.println("A1");
+  //delay(30);
+  serial.println("A2");
+  serial.println("A3");
+  //delay(30);
+  serial.println("A4");
+  delay(50);
+  serial.println("A5");
+  //delay(30);
+  serial.println("A6");
+  serial.println("A7");
+  //delay(30);
+  serial.println("A8");
+  serial.println("A9");
   delay(10);
 }
-void printYColumn()
+void printYColumnA()
 {
-  setX(82);
+  setX(52);
   setY(37);
   serial.println(analogRead(A0));
   serial.println(analogRead(A1));
@@ -126,9 +129,49 @@ void printYColumn()
   serial.println(analogRead(A4));
   serial.println(analogRead(A5));
   serial.println(analogRead(A6));
-  serial.println(digitalRead(21));
+  serial.println(analogRead(A7));
   delay(50);
-  serial.println(digitalRead(22));
-  serial.println(digitalRead(23));
+  serial.println(analogRead(A8));
+  serial.println(analogRead(A9));
+
+}
+void printXColumnB()
+{
+  delay(10);
+  setX(90);
+  setY(37);
+  serial.println("D2R");
+  serial.println("D4R");
+  //delay(30);
+  serial.println("D5R");
+  serial.println("D6R");
+  //delay(30);
+  serial.println("D7R");
+  delay(50);
+  serial.println("D8R");
+  //delay(30);
+  serial.println("D9F");
+  serial.println("D10F");
+  //delay(30);
+  serial.println("D11F");
+  serial.println("D12F");
+  delay(10);
+}
+void printYColumnB()
+{
+  setX(133);
+  setY(37);
+  serial.println(digitalRead(2));
+  serial.println(digitalRead(4));
+  serial.println(digitalRead(5));
+  serial.println(digitalRead(6));
+  delay(50);
+  serial.println(digitalRead(7));
+  serial.println(digitalRead(8));
+  serial.println(digitalRead(9));
+  serial.println(digitalRead(10));
+  delay(50);
+  serial.println(digitalRead(11));
+  serial.println(digitalRead(12));
 
 }

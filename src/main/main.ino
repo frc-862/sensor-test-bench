@@ -9,7 +9,7 @@ programming, we need to include lots of delays for them to catch up to eachother
 so they don't trip over commands and we don't end up with a corrupted image on
 the display.
 -Nolan Adams
-This code is released under an MIT License
+This code is released under the MIT License
 */
 
 
@@ -34,23 +34,29 @@ void setup()
   delay(50);
   setX(25);
   setY(23);
-  serial.print("Input");
+  serial.print("Analog");
   setX(100);
-  serial.print("Value");
+  serial.print("Digital");
 
   delay(200); //replaces smile for stability's sake
-  printXColumn();
+  printXColumnA();
+  delay(50);
+  printXColumnB();
   delay(100); //delay before loop starts
 }
 
 void loop()
 {
   setHome();
-  delay(100);
-  printYColumn();
+  delay(200);
+  printYColumnA();
+  delay(10);
+  printYColumnB();
   delay(1100);
-  eraseBlock(76, 33, 154, 119);
-  delay(250);
+  eraseBlock(43, 33, 79, 119);
+  //delay(100);
+  eraseBlock(118, 33, 154, 119);
+  delay(150);
   //clear the area where the values are displayed to remove residual digits if value gains or loses a digit
 
 }
