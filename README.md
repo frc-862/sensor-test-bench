@@ -1,3 +1,4 @@
 # sensor-test-bench-862
-The project is an Arduino-powered device for testing, troubleshooting, and prototyping with sensors.
-Built using the PlatformIO for Atom plugin. This code is released under the MIT license.
+This is the code for an Arduino-powered system for testing/prototyping with basic analog and digital sensors and other inputs.
+Built using PlatformIO, a plugin for the Atom text editor. 
+This code is released under the MIT license.
